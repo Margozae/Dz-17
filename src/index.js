@@ -8,7 +8,7 @@ let films = [{
 {
     name: 'Побег из Шоушенка',
     genre: 'drama',
-    year: 	1994
+    year: 1994
 },
 {
     name: 'Мстители 4: Финал',
@@ -23,17 +23,17 @@ let films = [{
 {
     name: 'Остров проклятых',
     genre: 'detective',
-    year: 	2009
+    year: 2009
 },
 {
     name: 'Большой куш',
     genre: 'comedy',
-    year: 	2000
+    year: 2000
 },
 {
     name: 'Помни',
     genre: 'detective',
-    year: 	2000
+    year: 2000
 }];
 films[Symbol.iterator] = function() {
     let filmsValue = Object.values(films);
