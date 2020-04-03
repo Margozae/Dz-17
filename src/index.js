@@ -1,6 +1,6 @@
 'use strict';
 
-let films = [{
+const films = [{
     name: 'Матрица',
     genre: 'action',
     year: 1999
@@ -8,7 +8,7 @@ let films = [{
 {
     name: 'Побег из Шоушенка',
     genre: 'drama',
-    year: 1994
+    year: 	1994
 },
 {
     name: 'Мстители 4: Финал',
@@ -23,20 +23,20 @@ let films = [{
 {
     name: 'Остров проклятых',
     genre: 'detective',
-    year: 2009
+    year: 	2009
 },
 {
     name: 'Большой куш',
     genre: 'comedy',
-    year: 2000
+    year: 	2000
 },
 {
     name: 'Помни',
     genre: 'detective',
-    year: 2000
+    year: 	2000
 }];
 films[Symbol.iterator] = function() {
-    let filmsValue = Object.values(films);
+    const filmsValue = Object.values(films);
     let index = 0;
     return {
         next() {
@@ -46,12 +46,12 @@ films[Symbol.iterator] = function() {
             return {
                 done: false,
                 value: filmsValue[index++].name
-            }
+            };
         }
-    }
+    };
 };
 
-const filmsObj = films.reduce(function(prev, film) {
+const filmsObj = films.reduce((prev, film) => {
     const mainGenre = film.genre;
     if(prev[mainGenre]) {
         prev[mainGenre].push({name:film.name, year:film.year});
@@ -62,14 +62,14 @@ const filmsObj = films.reduce(function(prev, film) {
 }, {});
 
 filmsObj[Symbol.iterator] = function() {
-    let filmsObjValue = Object.values(filmsObj);
+    const filmsObjValue = Object.values(filmsObj);
     let mainIndex = 0;
     let index = 0;
     return {
         next() {
             if(index === filmsObjValue[mainIndex].length) {
                 mainIndex++ ;
-                index = 0;
+                index = 0;   // eslint-disable-line
             }
             if(mainIndex === filmsObjValue.length) {
                 return {done: true};
@@ -77,9 +77,9 @@ filmsObj[Symbol.iterator] = function() {
             return {
                 done: false,
                 value: filmsObjValue[mainIndex][index++].name
-            }
+            };
         }
-    }
+    };
 };
 
 filmsObj.action.push({name:'Начало', year:2010});
@@ -87,5 +87,5 @@ filmsObj.detective.push({name:'Тело', year:2012});
 
 
 for(const film of filmsObj) {
-    console.log(film);
-};
+    console.log(film);   // eslint-disable-line
+}
